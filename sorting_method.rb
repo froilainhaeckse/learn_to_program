@@ -26,7 +26,7 @@ def sorting_method unsorted_array
 		sorted_array.push(storedword)
 		unsorted_array.delete(storedword)
 	end
-	puts sorted_array
+	return sorted_array
 end
 
-sorting_method(['liebe','geld','auszug','laptop','xxx'])
+puts sorting_method(['liebe','marie','thea','geld','auszug','laptop','xxx'])

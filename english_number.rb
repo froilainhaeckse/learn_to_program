@@ -15,6 +15,46 @@ def english_number number
 	#'left' is how much of the number we still have left to write out
 	#'write' is the part we are writing out right now
 	left=number
+
+	write=left/1000000000000
+	#How many thousands left?
+	left=left-write*1000000000000
+	#Subtract off those hundreds.
+	if write>0
+		#now heres the recursion:
+		billions=english_number(write)
+		num_string=num_string+billions+' billion'
+		if left >0
+			#so we dont write "two hundredfifty-one"...
+			num_string=num_string+''
+		end
+	end
+	write=left/1000000
+	#How many thousands left?
+	left=left-write*1000000
+	#Subtract off those hundreds.
+	if write>0
+		#now heres the recursion:
+		millions=english_number(write)
+		num_string=num_string+million+' million'
+		if left >0
+			#so we dont write "two hundredfifty-one"...
+			num_string=num_string+''
+		end
+	end
+	write=left/1000
+	#How many thousands left?
+	left=left-write*1000
+	#Subtract off those hundreds.
+	if write>0
+		#now heres the recursion:
+		thousands=english_number(write)
+		num_string=num_string+thousands+' thousand'
+		if left >0
+			#so we dont write "two hundredfifty-one"...
+			num_string=num_string+''
+		end
+	end
 	write=left/100
 	#How many hundreds left?
 	left=left-write*100
@@ -64,6 +104,6 @@ puts english_number( 99)
 puts english_number(100)
 puts english_number(101)
 puts english_number(234)
-puts english_number(3211)
+puts english_number(1000)
 puts english_number(999999)
 puts english_number(1000000000000)

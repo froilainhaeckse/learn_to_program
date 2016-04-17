@@ -19,10 +19,11 @@ def shuffle_method unshuffled_array
 	return shuffled_array
 end
 
-#tracks = shuffle_method(Dir['/Users/Documents/Musik/**/*.mp3'])
-tracks = shuffle_method(Dir['/Users/theaamanda/Documents/Musik/*.mp3'])
-File.open 'playlist.m3u', 'w' do |f|
+#tracks = shuffle_method(Dir['/Users/theaamanda/Documents/Musik/**/*.mp3'])
+tracks = shuffle_method(Dir['/Volumes/NO NAME/**/*.mp3'])
+File.open 'playlist_3.m3u', 'w' do |f|
 	tracks.each do |mp3|
 		f.write mp3+"\n"
 	end
 end
+

@@ -21,43 +21,39 @@ def shuffle_method unshuffled_array
 	return shuffled_array
 end
 
-# should take those tracks like hörspiele and put them in seperate playlist
-# erstellt von: Die Drei Fragezeichen oder Bibi Blocksberg
-# alles was dann noch übrig bleibt und länger als 40 minute ist, sollte in die playlist sets
-blocksberg = Array.new()
-fragezeichen = Array.new()
-# sets = Array.new()
+# in welchem verzeichnis liegt die mucke?
+music = Dir['/Users/theaamandakuppler/Documents/Mucke copy/*.mp3']
 
-music = Dir['/Users/theaamanda/Documents/Musik/**/*.mp3']
+# music.each do |mp3|
+# 	artist = Mp3Info.open(mp3).tag.artist
+# 	if artist == "Bibi Blocksberg" or artist == "Die Drei Fragezeichen" then
+# 		if artist == "Bibi blocksberg" then blocksberg.push(mp3) end
+# 		if artist == "Die Drei Fragezeichen" then fragezeichen.push(mp3) end
+# 		music.delete(mp3)
+# 	end
+# end
 
-music.each do |mp3|
-	artist = Mp3Info.open(mp3).tag.artist
-	if artist == "Bibi Blocksberg" or artist == "Die Drei Fragezeichen" then
-		if artist == "Bibi blocksberg" then blocksberg.push(mp3) end
-		if artist == "Die Drei Fragezeichen" then fragezeichen.push(mp3) end
-		music.delete(mp3)
-	end
-end
-
+# erstellt ein geshuffeltes array der tracks
 tracks = shuffle_method(music)
-File.open 'newplaylist.m3u', 'w' do |f|
+
+#name der playlist
+name = "playlist.m3u"
+
+#erstellt eine neue playlist
+File.open name, 'w' do |f|
 	tracks.each do |mp3|
 		f.write mp3+"\n"
 	end
 end
-
-File.open 'blocksberg_playlist.m3u', 'w' do |f|
-	blocksberg.each do |mp3|
-		f.write mp3+"\n"
-	end
-end
-
-File.open 'fragezeichen_playlist.m3u', 'w' do |f|
-	fragezeichen.each do |mp3|
-		f.write mp3+"\n"
-	end
-end
-
-
-
-
+	#
+	# File.open 'blocksberg_playlist.m3u', 'w' do |f|
+	# 	blocksberg.each do |mp3|
+	# 		f.write mp3+"\n"
+	# 	end
+	# end
+	#
+	# File.open 'fragezeichen_playlist.m3u', 'w' do |f|
+	# 	fragezeichen.each do |mp3|
+	# 		f.write mp3+"\n"
+	# 	end
+	# end

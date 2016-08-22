@@ -1,3 +1,4 @@
+# learntoprogram: 11.8
 # ​Build a better playlist.​
 # write a new ​music_shuffle​ method
 # It should take an array of filenames (like those listed previously) and mix them up good and proper.
@@ -23,6 +24,9 @@ end
 
 # in welchem verzeichnis liegt die mucke?
 music = Dir['/Users/theaamandakuppler/Documents/Mucke copy/*.mp3']
+'/Users/theaamandakuppler/Documents/Mucke/We blog for Change/*.mp3'
+
+# ['/Users/theaamandakuppler/Documents/Mucke copy/*.mp3']
 
 # music.each do |mp3|
 # 	artist = Mp3Info.open(mp3).tag.artist
@@ -35,6 +39,9 @@ music = Dir['/Users/theaamandakuppler/Documents/Mucke copy/*.mp3']
 
 # erstellt ein geshuffeltes array der tracks
 tracks = shuffle_method(music)
+
+# ungeshuffelt
+# tracks = music
 
 #name der playlist
 name = "playlist.m3u"

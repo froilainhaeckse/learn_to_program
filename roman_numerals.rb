@@ -1,30 +1,44 @@
-# Old-school Roman numerals.​ In the early days of Roman numerals, the Romans didn’t bother with any of this new-fangled subtraction “IX” nonsense.
-# No sir, it was straight addition, biggest to littlest—so 9 was written “VIIII,” and so on. Write a method that when passed an integer
-# between 1 and 3000 (or so) returns a string containing the proper old-school Roman numeral. In other words, ​old_roman_numeral 4​ should return 'IIII'.
-# Make sure to test your method on a bunch of different numbers. ​Hint:​ Use the integer division and modulus methods here.
+class RoNu
+# 12.6
 
-# For reference, these are the values of the letters used:
-
-# I = 1	V = 5	X = 10	L = 50
-# C = 100	D = 500	M = 1000
-# ​“Modern” Roman numerals.​ Eventually, someone thought it would be terribly clever if putting a smaller number before a larger one meant you had to
-# subtract the smaller one. As a result of this development, you must now suffer.
-# Rewrite your previous method to return the new-style Roman numerals so when someone calls ​roman_numeral 4​, it should return 'IV'.
-
-def roman number
-	rl = "" #emtpy roman letter string
-	counter = 0
-	numb_array = [1000,500,100,50,10,5,1]
-	letter_array = ['M','D','C','L','X','V','I']
-	numb_array.each do |numb|
-		#numb=jeweilige zahl vom array
-		rl = rl+(letter_array[counter]*(number/numb))
-		number = number%numb
-		counter = counter + 1
+	def self.inro(number)
+		rl = "" #emtpy roman letter string
+		counter = 0
+		numb_array = [1000,500,100,50,10,5,1]
+		letter_array = ['M','D','C','L','X','V','I']
+		numb_array.each do |num|
+			#numb=jeweilige zahl vom array
+			rl = rl+(letter_array[counter]*(number/num))
+			number = number%num
+			counter = counter + 1
+		end
+		return rl
 	end
-	return rl
+
+	def self.roin(roman)
+		int = nil #emtpy roman letter string
+		storage = nil
+		counter = 0
+		rom_hash = {"M" => 1000, "D" => 500, "C" => 100, "L" => 50, "X" => 10, "V" => 5, "I" => 1}
+		roman.each do |rom|
+			# nimm die roman numeral und check welche zahl es ist mit hash
+			if rom_hash[roman[counter]].to_i >= rom_hash[roman[counter+1]].to_i
+				int = int.to_i + rom_hash[roman[counter]].to_i
+				counter = counter + 1
+			else
+				int = int.to_i + (rom_hash[roman[counter+1]].to_i - rom_hash[roman[counter]].to_i)
+				counter = counter + 2
+			end
+		end
+		return int
+	end
+
 end
 
 puts "Please tell me the number you want to have in roman numerals"
-number = gets.chomp.to_i
-puts roman(number)
+num = gets.chomp.to_i
+puts RoNu.inro(num)
+
+puts "Please tell me the roman numeral you want to have in integer"
+roman = gets.chomp.chars
+puts RoNu.roin(roman)

@@ -1,19 +1,13 @@
-# „Shuffle.​ Now that you’ve finished your new sorting algorithm, how about the opposite? Write a ​shuffle​ method that takes an array and returns a 
-# totally shuffled version. As always, you’ll want to test it, but testing this one is trickier: How can you test to make sure you are getting a 
+class Shuffle
+# „Shuffle.​ Now that you’ve finished your new sorting algorithm, how about the opposite? Write a ​shuffle​ method that takes an array and returns a
+# totally shuffled version. As always, you’ll want to test it, but testing this one is trickier: How can you test to make sure you are getting a
 # perfect shuffle? What would you even say a perfect shuffle would be? Now test for it.“
 
-def shuffle_method unshuffled_array
-	#ich habe ein array mit einer bestimmten sortierung und möchte ein array mit einer neuen sortierung
-	#ich schau durch jedes wort des arrays und platziere es an einer neuen stelle im neuen array
-	#die stelle muss zufällig sein und darf nicht die gleiche stelle wie die zuvor sein
-
-	#leeres array erstellen mit gleich vielen teilen
-	shuffled_array = Array.new(unshuffled_array.length) 
+def self.shuffle_method unshuffled_array
+	shuffled_array = Array.new(unshuffled_array.length)
 	number = rand(0..unshuffled_array.length-1)
 	unshuffled_array.each do |word|
-		#stellt sicher dass die stelle im array leer ist
 		while shuffled_array[number] != nil
-			#takes, random number between range
 			number = rand(0..unshuffled_array.length-1)
 		end
 		shuffled_array[number] = word
@@ -43,4 +37,6 @@ end
 # 	return sorted_array
 # end
 
-puts shuffle_method(['liebe','marie','thea','geld','auszug','laptop','xxx'])
+end
+
+puts Shuffle.shuffle_method(['liebe','marie','thea','geld','auszug','laptop','xxx'])
